@@ -25,7 +25,7 @@ export default function SurveyPost() {
         difficultyPerception,
         performanceComparison,
         timestamp: new Date().toISOString(),
-      })
+      }),
     );
 
     // 提交后跳转到完成页面

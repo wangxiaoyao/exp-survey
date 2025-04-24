@@ -52,7 +52,7 @@ export default function Task() {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [userAnswer, setUserAnswer] = useState("");
   const [feedback, setFeedback] = useState<"correct" | "incorrect" | null>(
-    null
+    null,
   );
   const [timeLeft, setTimeLeft] = useState(20); // 20秒回答时间
   const [isTransitioning, setIsTransitioning] = useState(false);

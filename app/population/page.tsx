@@ -26,7 +26,7 @@ export default function Population() {
         gender,
         age,
         school,
-      })
+      }),
     );
 
     // 提交后跳转到 surveypre 页面

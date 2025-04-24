@@ -33,7 +33,7 @@ export default function SurveyPre() {
         group,
         rating1,
         rating2,
-      })
+      }),
     );
 
     // 提交后跳转到 tasktest 页面

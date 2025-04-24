@@ -22,7 +22,7 @@ export default function TaskTest() {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [userAnswer, setUserAnswer] = useState("");
   const [feedback, setFeedback] = useState<"correct" | "incorrect" | null>(
-    null
+    null,
   );
   const [timeLeft, setTimeLeft] = useState(30); // 30秒回答时间
   const [allCompleted, setAllCompleted] = useState(false);
