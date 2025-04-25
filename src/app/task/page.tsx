@@ -58,6 +58,14 @@ export default function Task() {
   const [showingFeedback, setShowingFeedback] = useState(false);
   const [readyForNext, setReadyForNext] = useState(false);
 
+  const [, setTaskLog] = useState<
+    { cues: string[]; expected: string; answer: string; correct: boolean }[]
+  >(() => {
+    if (typeof window === 'undefined') return [];
+    const saved = localStorage.getItem('survey-taskLog');
+    return saved ? JSON.parse(saved) : [];
+  });
+
   const currentQuestion = experimentQuestions[currentQuestionIndex];
 
   useEffect(() => {
@@ -114,6 +122,22 @@ export default function Task() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!userAnswer.trim()) return;
+    // 记录用户答题记录
+    const correct = userAnswer.trim() === currentQuestion.answer;
+    setTaskLog((prev) => {
+      const updated = [
+        ...prev,
+        {
+          cues: currentQuestion.cues,
+          expected: currentQuestion.answer,
+          answer: userAnswer.trim(),
+          correct,
+        },
+      ];
+      localStorage.setItem('survey-taskLog', JSON.stringify(updated));
+      return updated;
+    });
+
     checkAnswer();
     delayedNext();
   };

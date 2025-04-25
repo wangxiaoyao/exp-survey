@@ -28,22 +28,26 @@ export default function SurveyPost() {
       }),
     );
 
-    // 收集所有的页面的数据
+    // 收集所有的页面的数据：
     const fullData = {
       ...JSON.parse(localStorage.getItem('survey-demographics') || '{}'),
       ...JSON.parse(localStorage.getItem('survey-pre') || '{}'),
       ...JSON.parse(localStorage.getItem('survey-post') || '{}'),
+      ...JSON.parse(localStorage.getItem('survey-taskLog') || '[]'),
     };
 
-    const result = await fetch('api/save', {
+    const result = await fetch('/api/save', {
       method: 'post',
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(fullData),
     });
 
     const response: ResponseData = await result.json();
     if (response.success) {
-      // 提交后跳转到完成页面
-      router.push('/finish');
+      alert('提交成功 / Submission successful');
+      setTimeout(() => {
+        router.push('/finish');
+      }, 1000);
     } else {
       setFormError('提交失败 / Submission failed');
     }

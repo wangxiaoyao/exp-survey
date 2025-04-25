@@ -1,26 +1,25 @@
-"use client";
+'use client';
 
 export default function Finish() {
   return (
-    <div className="container mx-auto px-4 py-8 max-w-4xl">
-      <div className="bg-white p-8 rounded-lg shadow-md">
-        <h1 className="text-3xl font-bold text-center mb-6">任务完成</h1>
-        <p className="text-lg text-center mb-8">感谢你的参与！</p>
+    <div className="container mx-auto max-w-4xl px-4 py-8">
+      <div className="rounded-lg bg-white p-8 shadow-md">
+        <h1 className="mb-6 text-center text-3xl font-bold">任务完成</h1>
+        <p className="mb-8 text-center text-lg">感谢你的参与！</p>
 
         <div className="space-y-6">
           <p>
-            <strong>Research Topic</strong>: The Placebo Effect of AI System
-            Descriptions on Task Performance and Subjective Expectancy
+            <strong>Research Topic</strong>: The Placebo Effect of AI System Descriptions on Task
+            Performance and Subjective Expectancy
             <br />
             <strong>研究主题</strong>
             ：人工智能系统描述的安慰剂效应：对任务表现与主观期望的影响
           </p>
 
           <p>
-            We invited you to take part in this study because we wanted to learn
-            more about the placebo Effect of Artificial Intelligence in
-            Human–Computer Interaction. We invite you to participate in the
-            study because you are over 18 years old, speak Chinese and are a
+            We invited you to take part in this study because we wanted to learn more about the
+            placebo Effect of Artificial Intelligence in Human–Computer Interaction. We invite you
+            to participate in the study because you are over 18 years old, speak Chinese and are a
             University student.
           </p>
 
@@ -29,9 +28,9 @@ export default function Finish() {
           </p>
 
           <p>
-            Thank you for your participation. Without the goodwill and
-            cooperation of participants like you, we would not be able to
-            conduct our research. We greatly appreciate your contribution.
+            Thank you for your participation. Without the goodwill and cooperation of participants
+            like you, we would not be able to conduct our research. We greatly appreciate your
+            contribution.
           </p>
 
           <p>
@@ -39,21 +38,18 @@ export default function Finish() {
           </p>
 
           <p>
-            We conducted this study to examine how the placebo effect works when
-            people engage in system interaction with different describle
-            adaptions. In this experiment, participants were randomly assigned
-            to one of two situations: a no adaptivity group or a error-based
-            Adaptation group. To ensure the effectiveness of the experimental
-            assignment manipulation, before both groups of participants complish
-            the same set of anagram task, we will ask offer them different
-            descriptions of their system. They then finish the expectation
-            question, and a series of anagram task, and expectation question
-            again in the end. Although the system descriptions given are
-            different, the anagram task items, order and difficulty of the two
-            groups are actually exactly the same, and there is no artificial
-            intelligence to adjust the difficulty of the tasks. Through such
-            research, we may in the future be able to understand the effect of
-            placebo effect from different adaption system
+            We conducted this study to examine how the placebo effect works when people engage in
+            system interaction with different describle adaptions. In this experiment, participants
+            were randomly assigned to one of two situations: a no adaptivity group or a error-based
+            Adaptation group. To ensure the effectiveness of the experimental assignment
+            manipulation, before both groups of participants complish the same set of anagram task,
+            we will ask offer them different descriptions of their system. They then finish the
+            expectation question, and a series of anagram task, and expectation question again in
+            the end. Although the system descriptions given are different, the anagram task items,
+            order and difficulty of the two groups are actually exactly the same, and there is no
+            artificial intelligence to adjust the difficulty of the tasks. Through such research, we
+            may in the future be able to understand the effect of placebo effect from different
+            adaption system
           </p>
 
           <p>
@@ -61,13 +57,12 @@ export default function Finish() {
           </p>
 
           <p>
-            For our convenience, please do not discuss your participation in
-            today&apos;s study with anyone who may participate in our study in
-            the future. All of our participants had to remain
-            &quot;ignorant&quot; about the purpose of the experiment to ensure
-            the validity of our findings - even if participants did their best
-            to answer honestly during the study, knowing too much about the
-            study shaped their behavior in subtle and unconscious ways.
+            For our convenience, please do not discuss your participation in today&apos;s study with
+            anyone who may participate in our study in the future. All of our participants had to
+            remain &quot;ignorant&quot; about the purpose of the experiment to ensure the validity
+            of our findings - even if participants did their best to answer honestly during the
+            study, knowing too much about the study shaped their behavior in subtle and unconscious
+            ways.
           </p>
 
           <p>

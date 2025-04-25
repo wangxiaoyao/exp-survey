@@ -28,6 +28,12 @@
       "@constants/*": ["./src/constants/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/contexts/AuthContext.tsx"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "src/contexts/AuthContext.tsx"
+  ],
   "exclude": ["node_modules"]
 }
