@@ -1,66 +1,81 @@
-"use client";
+'use client';
 
-import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 
 // 完整的40道实验题目
 const experimentQuestions = [
-  { cues: ["山", "海", "日"], answer: "上" },
-  { cues: ["心", "绪", "头"], answer: "乱" },
-  { cues: ["黑", "名", "人"], answer: "大" },
-  { cues: ["花", "空", "讲"], answer: "话" },
-  { cues: ["风", "空", "魂"], answer: "灵" },
-  { cues: ["言", "花", "路"], answer: "说" },
-  { cues: ["心", "金", "碎"], answer: "破" },
-  { cues: ["力", "三", "角"], answer: "量" },
-  { cues: ["生", "目", "点"], answer: "眼" },
-  { cues: ["明", "言", "话"], answer: "白" },
-  { cues: ["眼", "影", "门"], answer: "光" },
-  { cues: ["力", "天", "运"], answer: "气" },
-  { cues: ["水", "眼", "光"], answer: "泪" },
-  { cues: ["口", "木", "目"], answer: "相" },
-  { cues: ["雨", "木", "风"], answer: "林" },
-  { cues: ["水", "月", "流"], answer: "河" },
-  { cues: ["明", "知", "意"], answer: "心" },
-  { cues: ["路", "手", "心"], answer: "指" },
-  { cues: ["火", "力", "身"], answer: "炼" },
-  { cues: ["中", "风", "动"], answer: "感" },
-  { cues: ["生", "动", "神"], answer: "精" },
-  { cues: ["方", "进", "路"], answer: "向" },
-  { cues: ["口", "目", "心"], answer: "想" },
-  { cues: ["手", "口", "意"], answer: "指" },
-  { cues: ["天", "海", "情"], answer: "深" },
-  { cues: ["空", "思", "路"], answer: "想" },
-  { cues: ["音", "声", "调"], answer: "乐" },
-  { cues: ["水", "石", "花"], answer: "晶" },
-  { cues: ["风", "流", "思"], answer: "云" },
-  { cues: ["度", "分", "秒"], answer: "时" },
-  { cues: ["地", "心", "路"], answer: "方" },
-  { cues: ["口", "音", "道"], answer: "说" },
-  { cues: ["山", "水", "画"], answer: "风" },
-  { cues: ["日", "青", "白"], answer: "明" },
-  { cues: ["上", "下", "思"], answer: "心" },
-  { cues: ["心", "手", "口"], answer: "意" },
-  { cues: ["天", "地", "人"], answer: "间" },
-  { cues: ["花", "月", "情"], answer: "爱" },
-  { cues: ["水", "火", "风"], answer: "元" },
-  { cues: ["高", "山", "远"], answer: "望" },
+  { cues: ['亮', '照', '星'], answer: '明' },
+  { cues: ['代', '童', '级'], answer: '年' },
+  { cues: ['倒', '超', '票'], answer: '车' },
+  { cues: ['刻', '光', '临'], answer: '时' },
+  { cues: ['升', '问', '费'], answer: '学' },
+  { cues: ['印', '园', '费'], answer: '花' },
+  { cues: ['原', '清', '超'], answer: '高' },
+  { cues: ['酒', '选', '发'], answer: '美' },
+  { cues: ['员', '计', '体'], answer: '会' },
+  { cues: ['问', '案', '应'], answer: '答' },
+  { cues: ['夜', '接', '断'], answer: '间' },
+  { cues: ['奇', '转', '喜'], answer: '好' },
+  { cues: ['存', '女', '写'], answer: '生' },
+  { cues: ['导', '费', '表'], answer: '电' },
+  { cues: ['展', '改', '度'], answer: '进' },
+  { cues: ['等', '架', '流'], answer: '上' },
+  { cues: ['建', '新', '趣'], answer: '兴' },
+  { cues: ['得', '逃', '过'], answer: '难' },
+  { cues: ['播', '导', '得'], answer: '主' },
+  { cues: ['政', '通', '善'], answer: '变' },
+  { cues: ['数', '女', '减'], answer: '少' },
+  { cues: ['书', '试', '表'], answer: '面' },
+  { cues: ['期', '落', '善'], answer: '后' },
+  { cues: ['条', '原', '压'], answer: '油' },
+  { cues: ['歌', '友', '养'], answer: '老' },
+  { cues: ['求', '物', '词'], answer: '证' },
+  { cues: ['流', '掉', '平'], answer: '放' },
+  { cues: ['火', '落', '指'], answer: '点' },
+  { cues: ['无', '报', '节'], answer: '情' },
+  { cues: ['留', '图', '随'], answer: '意' },
+  { cues: ['异', '格', '感'], answer: '性' },
+  { cues: ['当', '宜', '轻'], answer: '便' },
+  { cues: ['缘', '先', '内'], answer: '人' },
+  { cues: ['考', '产', '测'], answer: '量' },
+  { cues: ['航', '产', '运'], answer: '海' },
+  { cues: ['间', '观', '守'], answer: '看' },
+  { cues: ['解', '原', '论'], answer: '理' },
+  { cues: ['解', '服', '听'], answer: '说' },
+  { cues: ['通', '业', '李'], answer: '行' },
+  { cues: ['速', '语', '见'], answer: '成' },
 ];
 
 export default function Task() {
   const router = useRouter();
+
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [userAnswer, setUserAnswer] = useState("");
-  const [feedback, setFeedback] = useState<"correct" | "incorrect" | null>(
-    null,
-  );
-  const [timeLeft, setTimeLeft] = useState(20); // 20秒回答时间
+  const [userAnswer, setUserAnswer] = useState('');
+  const [feedback, setFeedback] = useState<'correct' | 'incorrect' | null>(null);
+  const [timeLeft, setTimeLeft] = useState(5);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [showingFeedback, setShowingFeedback] = useState(false);
+  const [readyForNext, setReadyForNext] = useState(false);
 
   const currentQuestion = experimentQuestions[currentQuestionIndex];
 
-  // 计时器
+  useEffect(() => {
+    if (readyForNext) {
+      if (currentQuestionIndex < experimentQuestions.length - 1) {
+        setCurrentQuestionIndex((prev) => prev + 1);
+        setUserAnswer('');
+        setFeedback(null);
+        setTimeLeft(5);
+        setIsTransitioning(false);
+        setShowingFeedback(false);
+        setReadyForNext(false);
+      } else {
+        router.push('/surveypost');
+      }
+    }
+  }, [readyForNext]);
+
   useEffect(() => {
     if (feedback !== null || isTransitioning || !currentQuestion) return;
 
@@ -68,8 +83,9 @@ export default function Task() {
       setTimeLeft((prev) => {
         if (prev <= 1) {
           clearInterval(timer);
-          setFeedback("incorrect");
+          setFeedback('incorrect');
           setShowingFeedback(true);
+          delayedNext();
           return 0;
         }
         return prev - 1;
@@ -77,72 +93,55 @@ export default function Task() {
     }, 1000);
 
     return () => clearInterval(timer);
-  }, [currentQuestionIndex, feedback, isTransitioning, currentQuestion]);
+  }, [currentQuestionIndex, feedback, isTransitioning]);
 
-  // 检查答案
+  const delayedNext = () => {
+    setIsTransitioning(true);
+    setTimeout(() => {
+      setReadyForNext(true);
+    }, 1500);
+  };
+
   const checkAnswer = () => {
-    if (
-      userAnswer.trim().toLowerCase() === currentQuestion.answer.toLowerCase()
-    ) {
-      setFeedback("correct");
+    if (userAnswer.trim().toLowerCase() === currentQuestion.answer.toLowerCase()) {
+      setFeedback('correct');
     } else {
-      setFeedback("incorrect");
+      setFeedback('incorrect');
     }
     setShowingFeedback(true);
   };
 
-  // 提交答案
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!userAnswer.trim()) return;
     checkAnswer();
-
-    // 设置延迟跳转标志
-    setIsTransitioning(true);
-
-    // 1.5秒后跳转到下一题或完成页面
-    setTimeout(() => {
-      if (currentQuestionIndex < experimentQuestions.length - 1) {
-        setCurrentQuestionIndex((prev) => prev + 1);
-        setUserAnswer("");
-        setFeedback(null);
-        setShowingFeedback(false);
-        setTimeLeft(20);
-        setIsTransitioning(false);
-      } else {
-        // 所有题目完成后跳转到结束页面
-        router.push("/surveypost");
-      }
-    }, 1500);
+    delayedNext();
   };
 
   return (
-    <div className="container mx-auto px-4 py-8 max-w-3xl">
-      <h1 className="text-3xl font-bold text-center mb-8">字谜实验任务</h1>
+    <div className="container mx-auto max-w-3xl px-4 py-8">
+      <h1 className="mb-8 text-center text-3xl font-bold">字谜实验任务</h1>
 
       <div className="mb-6 text-center">
-        <p className="text-lg mb-2">
+        <p className="mb-2 text-lg">
           题目 {currentQuestionIndex + 1} / {experimentQuestions.length}
         </p>
         <p className="text-md">
-          剩余时间:{" "}
-          <span className={`font-bold ${timeLeft < 10 ? "text-red-500" : ""}`}>
-            {timeLeft}
-          </span>{" "}
-          秒
+          剩余时间:{' '}
+          <span className={`font-bold ${timeLeft < 10 ? 'text-red-500' : ''}`}>{timeLeft}</span> 秒
         </p>
       </div>
 
-      <div className="bg-white dark:bg-gray-800 shadow-md rounded-lg p-6 mb-8">
-        <h2 className="text-xl font-semibold mb-4">
+      <div className="mb-8 rounded-lg bg-white p-6 shadow-md dark:bg-gray-800">
+        <h2 className="mb-4 text-xl font-semibold">
           请找出与以下三个词都能组成有意义词组的一个字:
         </h2>
 
-        <div className="flex justify-center gap-8 my-6">
-          {currentQuestion?.cues.map((cue, index) => (
+        <div className="my-6 flex justify-center gap-8">
+          {currentQuestion?.cues?.map((cue, index) => (
             <div
               key={index}
-              className="text-3xl font-bold border-2 border-gray-300 rounded-md w-16 h-16 flex items-center justify-center"
+              className="flex h-16 w-16 items-center justify-center rounded-md border-2 border-gray-300 text-3xl font-bold"
             >
               {cue}
             </div>
@@ -161,7 +160,7 @@ export default function Task() {
                   id="answer"
                   value={userAnswer}
                   onChange={(e) => setUserAnswer(e.target.value)}
-                  className="border border-gray-300 rounded-md px-4 py-2 text-xl text-center w-16 h-16"
+                  className="h-16 w-16 rounded-md border border-gray-300 px-4 py-2 text-center text-xl"
                   maxLength={1}
                   autoFocus
                   required
@@ -169,7 +168,7 @@ export default function Task() {
               </div>
               <button
                 type="submit"
-                className="px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition"
+                className="rounded-md bg-blue-600 px-6 py-2 text-white transition hover:bg-blue-700"
               >
                 提交答案
               </button>
@@ -179,46 +178,42 @@ export default function Task() {
 
         {(showingFeedback || isTransitioning) && (
           <div
-            className={`
-            mt-6 p-4 rounded-md text-center 
-            ${
-              feedback === "correct"
-                ? "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-100"
-                : "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-100"
+            className={`mt-6 rounded-md p-4 text-center ${
+              feedback === 'correct'
+                ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-100'
+                : 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-100'
             }`}
           >
-            <p className="text-lg font-semibold mb-2">
-              {feedback === "correct" ? "回答正确！" : "回答错误！"}
+            <p className="mb-2 text-lg font-semibold">
+              {feedback === 'correct' ? '回答正确！' : '回答错误！'}
             </p>
 
             <p className="mb-2">
-              {feedback === "correct"
-                ? "系统将调整下一题的难度以匹配你的能力"
-                : "系统将自动降低下一个题目的难度，帮助你继续进步"}
+              {feedback === 'correct'
+                ? '系统将调整下一题的难度以匹配你的能力'
+                : '系统将自动降低下一个题目的难度，帮助你继续进步'}
             </p>
 
-            {feedback === "incorrect" && (
+            {feedback === 'incorrect' && (
               <p className="mb-2">
-                正确答案:{" "}
-                <span className="font-bold">{currentQuestion.answer}</span>
+                正确答案: <span className="font-bold">{currentQuestion?.answer || ''}</span>
               </p>
             )}
 
-            <p className="text-sm mt-2 font-medium">正在跳转到下一题...</p>
+            <p className="mt-2 text-sm font-medium">正在跳转到下一题...</p>
           </div>
         )}
       </div>
 
-      {/* 显示完成情况进度条 */}
-      <div className="w-full bg-gray-200 h-2 rounded-full overflow-hidden">
+      <div className="h-2 w-full overflow-hidden rounded-full bg-gray-200">
         <div
-          className="bg-blue-600 h-full"
+          className="h-full bg-blue-600"
           style={{
             width: `${(currentQuestionIndex / experimentQuestions.length) * 100}%`,
           }}
         ></div>
       </div>
-      <p className="text-center text-sm mt-2 text-gray-600">
+      <p className="mt-2 text-center text-sm text-gray-600">
         已完成: {currentQuestionIndex}/{experimentQuestions.length}
       </p>
     </div>
