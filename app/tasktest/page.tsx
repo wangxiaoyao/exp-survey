@@ -22,7 +22,7 @@ export default function TaskTest() {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [userAnswer, setUserAnswer] = useState('');
   const [feedback, setFeedback] = useState<'correct' | 'incorrect' | null>(null);
-  const [timeLeft, setTimeLeft] = useState(5);
+  const [timeLeft, setTimeLeft] = useState(30);
   const [allCompleted, setAllCompleted] = useState(false);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [readyForNext, setReadyForNext] = useState(false); // ✅ 关键状态
@@ -36,7 +36,7 @@ export default function TaskTest() {
         setCurrentQuestionIndex((prev) => prev + 1);
         setUserAnswer('');
         setFeedback(null);
-        setTimeLeft(5);
+        setTimeLeft(30);
         setIsTransitioning(false);
         setReadyForNext(false); // ✅ 重置
       } else {
@@ -98,7 +98,7 @@ export default function TaskTest() {
             <p className="mb-4">
               在这个实验中，您需要通过三个汉字找到一个能与它们组成词语的目标字。
             </p>
-            <p className="mb-4">每题限时 5 秒，注意多音字和词义的变化。</p>
+            <p className="mb-4">每题限时 30 秒，注意多音字和词义的变化。</p>
           </div>
 
           <div className="mb-6 text-center">

@@ -53,7 +53,7 @@ export default function Task() {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [userAnswer, setUserAnswer] = useState('');
   const [feedback, setFeedback] = useState<'correct' | 'incorrect' | null>(null);
-  const [timeLeft, setTimeLeft] = useState(5);
+  const [timeLeft, setTimeLeft] = useState(30);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [showingFeedback, setShowingFeedback] = useState(false);
   const [readyForNext, setReadyForNext] = useState(false);
@@ -66,7 +66,7 @@ export default function Task() {
         setCurrentQuestionIndex((prev) => prev + 1);
         setUserAnswer('');
         setFeedback(null);
-        setTimeLeft(5);
+        setTimeLeft(30);
         setIsTransitioning(false);
         setShowingFeedback(false);
         setReadyForNext(false);
