@@ -140,3 +140,7 @@ Actionable Steps:
 Create a final Completion component to display the study summary.
 
 Provide the option for the participant to exit or finish.
+
+## use vercel/blob
+
+npm install @vercel/blob

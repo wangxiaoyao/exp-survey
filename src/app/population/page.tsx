@@ -1,27 +1,27 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 export default function Population() {
   const router = useRouter();
-  const [gender, setGender] = useState("");
-  const [age, setAge] = useState("");
-  const [school, setSchool] = useState("");
-  const [formError, setFormError] = useState("");
+  const [gender, setGender] = useState('');
+  const [age, setAge] = useState('');
+  const [school, setSchool] = useState('');
+  const [formError, setFormError] = useState('');
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
     // 验证所有字段是否已填写
     if (!gender || !age || !school) {
-      setFormError("请完成所有必填项 / Please complete all required fields");
+      setFormError('请完成所有必填项 / Please complete all required fields');
       return;
     }
 
     // 将用户选择存储在会话存储中，以便在其他页面可以使用
-    sessionStorage.setItem(
-      "userDemographics",
+    localStorage.setItem(
+      'survey-demographics',
       JSON.stringify({
         gender,
         age,
@@ -30,14 +30,12 @@ export default function Population() {
     );
 
     // 提交后跳转到 surveypre 页面
-    router.push("/surveypre");
+    router.push('/surveypre');
   };
 
   return (
-    <div className="container mx-auto px-4 py-8 max-w-2xl">
-      <h1 className="text-3xl font-bold text-center mb-8">
-        人口统计信息 / Demographics
-      </h1>
+    <div className="container mx-auto max-w-2xl px-4 py-8">
+      <h1 className="mb-8 text-center text-3xl font-bold">人口统计信息 / Demographics</h1>
 
       <form onSubmit={handleSubmit} className="space-y-8">
         {/* 性别选择 */}
@@ -49,7 +47,7 @@ export default function Population() {
                 type="radio"
                 name="gender"
                 value="male"
-                checked={gender === "male"}
+                checked={gender === 'male'}
                 onChange={(e) => setGender(e.target.value)}
                 className="h-5 w-5"
               />
@@ -60,7 +58,7 @@ export default function Population() {
                 type="radio"
                 name="gender"
                 value="female"
-                checked={gender === "female"}
+                checked={gender === 'female'}
                 onChange={(e) => setGender(e.target.value)}
                 className="h-5 w-5"
               />
@@ -75,7 +73,7 @@ export default function Population() {
           <select
             value={age}
             onChange={(e) => setAge(e.target.value)}
-            className="w-full p-2 border border-gray-300 rounded-md"
+            className="w-full rounded-md border border-gray-300 p-2"
           >
             <option value="">请选择 / Please select</option>
             <option value="18">18</option>
@@ -96,36 +94,27 @@ export default function Population() {
           <select
             value={school}
             onChange={(e) => setSchool(e.target.value)}
-            className="w-full p-2 border border-gray-300 rounded-md"
+            className="w-full rounded-md border border-gray-300 p-2"
           >
             <option value="">请选择 / Please select</option>
-            <option value="温州肯恩大学">
-              温州肯恩大学 / Wenzhou-Kean University
-            </option>
+            <option value="温州肯恩大学">温州肯恩大学 / Wenzhou-Kean University</option>
             <option value="温州大学">温州大学 / Wenzhou University</option>
-            <option value="温州医科大学">
-              温州医科大学 / Wenzhou Medical University
-            </option>
+            <option value="温州医科大学">温州医科大学 / Wenzhou Medical University</option>
             <option value="浙江工贸职业技术学院">
-              浙江工贸职业技术学院 / Zhejiang Industry & Trade Vocational
-              College
+              浙江工贸职业技术学院 / Zhejiang Industry & Trade Vocational College
             </option>
             <option value="其他">其他 / Other</option>
           </select>
         </div>
 
         {/* 错误信息 */}
-        {formError && (
-          <div className="text-red-500 text-center font-semibold">
-            {formError}
-          </div>
-        )}
+        {formError && <div className="text-center font-semibold text-red-500">{formError}</div>}
 
         {/* 提交按钮 */}
         <div className="flex justify-center pt-4">
           <button
             type="submit"
-            className="px-8 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition font-bold"
+            className="rounded-md bg-blue-600 px-8 py-3 font-bold text-white transition hover:bg-blue-700"
           >
             继续 / Continue
           </button>
