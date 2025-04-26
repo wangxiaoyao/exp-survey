@@ -3,7 +3,7 @@
 export default function Finish() {
   return (
     <div className="container mx-auto max-w-4xl px-4 py-8">
-      <div className="rounded-lg bg-white p-8 shadow-md">
+      <div className="rounded-lg p-8 shadow-md">
         <h1 className="mb-6 text-center text-3xl font-bold">任务完成</h1>
         <p className="mb-8 text-center text-lg">感谢你的参与！</p>
 
