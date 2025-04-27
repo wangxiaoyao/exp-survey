@@ -64,38 +64,54 @@ flowchart TD
   A1 -. script .-> C4
 ```
 
+### stack
 
+#### Client:
 
-### Client:
 - Next.js 15 + React 19 rendered at the edge (SSR/ISR) for speed & SEO.
 - style：Tailwind CSS + ShadCN + Motion
 - Form: react-hook-form
 - state: Zustand
 
-### Edge: 
-- Lightweight serverless functions
-- middleware enforce routing rules, 
-- Auth:	FingerprintJS Pro (optional) ，rate-limit IPs,
+#### Edge:
 
-### Services:
+- Lightweight serverless functions
+- middleware enforce routing rules,
+- Auth: FingerprintJS Pro (optional) ，rate-limit IPs,
+
+#### Services:
+
 - Vercel Blob：raw survey payloads (JSON/CSV, screenshots, files).
 - Vercel KV：tiny metadata (anonymised user hash → stage, attempt count, timestamps).
 - CI/CD: github actions,vercel
 - Monitoring: Sentry,vercel log
 - Plausible – privacy-friendly usage metrics
 
+### Algorithms
 
+#### Group Assignment
 
+```
+export function assignGroup(id: string): 'control' | 'experiment' {
+  const hash = crypto.createHash('sha1').update(id).digest('hex');
+  return parseInt(hash.slice(0, 2), 16) % 2 === 0 ? 'control' : 'experiment';
+}
+```
 
+#### Dynamic Difficulty
 
+```
+export function nextDifficulty(score: number, prev: number) {
+  const delta = score - prev;
+  if (delta >  0.2) return 'harder';
+  if (delta < -0.2) return 'easier';
+  return 'same';
+}
+```
 
+### Data Model
 
-
-
-
-## 三 hightlight
-
-### Vercel Blob
+#### Vercel Blob
 
 Token generation using vercel login and vercel link.
 
@@ -115,6 +131,8 @@ vercel link
 - vercel项目的变量
 ```
 
+#### Vercel KV
+
 ### No-login Evaluation:
 
 Participants can complete the survey without authentication.
@@ -130,3 +148,11 @@ Direct URL access to later steps is restricted.
 ### Task Countdown Timer:
 
 Each task page includes a countdown timer to control completion time and ensure fair task timing.
+
+## 三 UI / UX Specification
+
+### colors
+
+test
+
+
